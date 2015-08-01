@@ -16,7 +16,7 @@ module.exports = function ( grunt ) {
         config: {
             src: 'assets/src',
             dist: 'assets/dist',
-            devUrl: 'starter.dev'
+            devUrl: 'tayloroyer.local:8888'
         },
 
         // Libsass

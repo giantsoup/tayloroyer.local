@@ -14,7 +14,7 @@ if ( ! isset( $content_width ) )
 
 
 
-if ( ! function_exists( '_s_setup' ) ) :
+if ( ! function_exists( 'tayloroyer_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -22,15 +22,15 @@ if ( ! function_exists( '_s_setup' ) ) :
  * before the init hook. The init hook is too late for some features, such as indicating
  * support post thumbnails.
  */
-function _s_setup() {
+function tayloroyer_setup() {
 
     /*
      * Make theme available for translation.
      * Translations can be filed in the /languages/ directory.
-     * If you're building a theme based on _s, use a find and replace
-     * to change '_s' to the name of your theme in all the template files
+     * If you're building a theme based on Tayloroyer, use a find and replace
+     * to change 'tayloroyer' to the name of your theme in all the template files
      */
-    load_theme_textdomain( '_s', get_template_directory() . '/languages' );
+    load_theme_textdomain( 'tayloroyer', get_template_directory() . '/languages' );
 
     // Add default posts and comments RSS feed links to head.
     add_theme_support( 'automatic-feed-links' );
@@ -64,7 +64,7 @@ function _s_setup() {
      * @param  array $sizes list of sizes
      * @return array
      */
-    function _s_media_library_image_options( $sizes ) {
+    function tayloroyer_media_library_image_options( $sizes ) {
 
         $new_sizes = array_merge( $sizes, array(
             // name must be string, not integer
@@ -74,18 +74,18 @@ function _s_setup() {
         return $new_sizes;
 
     }
-    add_filter( 'image_size_names_choose', '_s_media_library_image_options' );
+    add_filter( 'image_size_names_choose', 'tayloroyer_media_library_image_options' );
 
     /**
      * This theme uses wp_nav_menu() in one location.
      */
     register_nav_menus( array(
-        'primary' => __( 'Primary Menu', '_s' ),
+        'primary' => __( 'Primary Menu', 'tayloroyer' ),
     ) );
 
 }
-endif; // _s_setup
-add_action( 'after_setup_theme', '_s_setup' );
+endif; // tayloroyer_setup
+add_action( 'after_setup_theme', 'tayloroyer_setup' );
 
 
 
@@ -96,10 +96,10 @@ add_action( 'after_setup_theme', '_s_setup' );
  *
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
  */
-function _s_widgets_init() {
+function tayloroyer_widgets_init() {
 
     register_sidebar( array(
-        'name'          => __( 'Sidebar', '_s' ),
+        'name'          => __( 'Sidebar', 'tayloroyer' ),
         'id'            => 'sidebar-1',
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         'after_widget'  => '</aside>',
@@ -108,7 +108,7 @@ function _s_widgets_init() {
     ) );
 
 }
-add_action( 'widgets_init', '_s_widgets_init' );
+add_action( 'widgets_init', 'tayloroyer_widgets_init' );
 
 
 
@@ -117,14 +117,14 @@ add_action( 'widgets_init', '_s_widgets_init' );
 /**
  * Enqueue scripts and styles
  */
-function _s_scripts() {
+function tayloroyer_scripts() {
 
     if ( !is_admin() ) {
 
         // Styles
         wp_enqueue_style( 'googlefonts', add_query_arg( 'family', 'Open+Sans:400,300,700|Roboto:400,100,900italic', '//fonts.googleapis.com/css' ), array(), null );
         wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/dist/css/main.min.css', array(), null );
-        wp_enqueue_style( '_s-style', get_stylesheet_uri(), array( 'main' ) );
+        wp_enqueue_style( 'tayloroyer-style', get_stylesheet_uri(), array( 'main' ) );
 
         // IE Conditional
         wp_register_style( 'no-mq', get_template_directory_uri() . '/assets/dist/css/no-mq.css', array(), null );
@@ -148,7 +148,7 @@ function _s_scripts() {
         wp_enqueue_script( 'comment-reply' );
     }
 }
-add_action( 'wp_enqueue_scripts', '_s_scripts' );
+add_action( 'wp_enqueue_scripts', 'tayloroyer_scripts' );
 
 
 
@@ -160,7 +160,7 @@ add_action( 'wp_enqueue_scripts', '_s_scripts' );
  * Managed by Advanced Custom Fields Plugin
  *
  */
-function _s_acf_options_page_settings( $settings )
+function tayloroyer_acf_options_page_settings( $settings )
 {
     $settings['title'] = 'Global Options';
     // $settings['pages'] = array('Header', 'Sidebar', 'Footer');
@@ -168,7 +168,7 @@ function _s_acf_options_page_settings( $settings )
     return $settings;
 }
 
-add_filter('acf/options_page/settings', '_s_acf_options_page_settings');
+add_filter('acf/options_page/settings', 'tayloroyer_acf_options_page_settings');
 
 
 
@@ -177,7 +177,7 @@ add_filter('acf/options_page/settings', '_s_acf_options_page_settings');
 /**
  * Order Menu Items
  */
-function _s_custom_menu_order( $menu_ord ) {
+function tayloroyer_custom_menu_order( $menu_ord ) {
     if ( !$menu_ord ) return true;
     return array(
         'index.php', // Dashboard
@@ -187,8 +187,8 @@ function _s_custom_menu_order( $menu_ord ) {
         'upload.php' // Media
     );
 }
-add_filter('custom_menu_order', '_s_custom_menu_order');
-add_filter('menu_order', '_s_custom_menu_order');
+add_filter('custom_menu_order', 'tayloroyer_custom_menu_order');
+add_filter('menu_order', 'tayloroyer_custom_menu_order');
 
 
 
@@ -197,7 +197,7 @@ add_filter('menu_order', '_s_custom_menu_order');
 /**
  * Modify main query
  */
-function _s_modify_main_query( $query ) {
+function tayloroyer_modify_main_query( $query ) {
     if ( is_admin() || ! $query->is_main_query() )
         return;
 
@@ -215,7 +215,7 @@ function _s_modify_main_query( $query ) {
     //  $query->set( 'meta_value', true );
     // }
 }
-add_action( 'pre_get_posts', '_s_modify_main_query', 1 );
+add_action( 'pre_get_posts', 'tayloroyer_modify_main_query', 1 );
 
 
 
@@ -224,14 +224,14 @@ add_action( 'pre_get_posts', '_s_modify_main_query', 1 );
 /**
  * Remove inline styling for recent comments widget
  */
-function _s_remove_recent_comments_style() {
+function tayloroyer_remove_recent_comments_style() {
 
         global $wp_widget_factory;
 
         remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
 
     }
-add_action( 'widgets_init', '_s_remove_recent_comments_style' );
+add_action( 'widgets_init', 'tayloroyer_remove_recent_comments_style' );
 
 
 

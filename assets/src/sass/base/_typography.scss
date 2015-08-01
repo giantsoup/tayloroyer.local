@@ -63,9 +63,9 @@ textarea {
 
 a {
     text-decoration: none;
-    color: $link-color;
+    color: $endeavour;
     @include transition-property( color, background, border );
-    @include transition-duration( .15s );
+    @include transition-duration( .5s );
     &:hover {
         color: $charcoal;
     }

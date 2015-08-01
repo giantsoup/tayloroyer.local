@@ -28,7 +28,7 @@ if( function_exists( 'acf_add_options_page' ) ) {
  *
  * Plugin: Advanced Custom Fields
  */
-function _s_hide_acf_menu() {
+function tayloroyer_hide_acf_menu() {
 
     // provide a list of usernames who can edit custom field definitions here
     $admins = array(
@@ -47,7 +47,7 @@ function _s_hide_acf_menu() {
     }
 
 }
-add_action( 'admin_menu', '_s_hide_acf_menu', 999 );
+add_action( 'admin_menu', 'tayloroyer_hide_acf_menu', 999 );
 
 
 
@@ -58,12 +58,12 @@ add_action( 'admin_menu', '_s_hide_acf_menu', 999 );
  *
  * Plugin: Yoast SEO
  */
-function _s_yoast_meta_order() {
+function tayloroyer_yoast_meta_order() {
 
     return 'low';
 
 }
-add_filter( 'wpseo_metabox_prio', '_s_yoast_meta_order' );
+add_filter( 'wpseo_metabox_prio', 'tayloroyer_yoast_meta_order' );
 
 
 
@@ -74,7 +74,7 @@ add_filter( 'wpseo_metabox_prio', '_s_yoast_meta_order' );
  *
  * Plugin: Yoast SEO
  */
-function _s_hide_yoast_columns() {
+function tayloroyer_hide_yoast_columns() {
 
     if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
         return false;
@@ -83,4 +83,4 @@ function _s_hide_yoast_columns() {
 
     add_filter( 'wpseo_use_page_analysis', '__return_false' );
 }
-add_action( 'init', '_s_hide_yoast_columns' );
+add_action( 'init', 'tayloroyer_hide_yoast_columns' );

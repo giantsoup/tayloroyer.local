@@ -1,8 +1,8 @@
 <?php
 /**
- * _s functions and definitions
+ * Tayloroyer functions and definitions
  *
- * @package _s
+ * @package Tayloroyer
  */
 
 /* ==========================================================================

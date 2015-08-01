@@ -2,27 +2,27 @@
 /**
  * Custom functionality for this theme.
  *
- * @package _s
+ * @package Tayloroyer
  */
 
 /* ==========================================================================
    Comments
    ========================================================================== */
 
-if ( ! function_exists( '_s_comment' ) ) :
+if ( ! function_exists( 'tayloroyer_comment' ) ) :
 /**
  * Template for comments and pingbacks.
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
  */
-function _s_comment( $comment, $args, $depth ) {
+function tayloroyer_comment( $comment, $args, $depth ) {
     $GLOBALS['comment'] = $comment;
 
     if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
 
     <li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
         <div class="comment-body">
-            <?php _e( 'Pingback:', '_s' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', '_s' ), '<span class="edit-link">', '</span>' ); ?>
+            <?php _e( 'Pingback:', 'tayloroyer' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'tayloroyer' ), '<span class="edit-link">', '</span>' ); ?>
         </div>
 
     <?php else : ?>
@@ -32,20 +32,20 @@ function _s_comment( $comment, $args, $depth ) {
             <footer class="comment-meta">
                 <div class="comment-author vcard">
                     <?php if ( 0 != $args['avatar_size'] ) { echo get_avatar( $comment, $args['avatar_size'] ); } ?>
-                    <?php printf( __( '%s <span class="says">says:</span>', '_s' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
+                    <?php printf( __( '%s <span class="says">says:</span>', 'tayloroyer' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
                 </div><!-- .comment-author -->
 
                 <div class="comment-metadata">
                     <a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
                         <time datetime="<?php comment_time( 'c' ); ?>">
-                            <?php printf( _x( '%1$s at %2$s', '1: date, 2: time', '_s' ), get_comment_date(), get_comment_time() ); ?>
+                            <?php printf( _x( '%1$s at %2$s', '1: date, 2: time', 'tayloroyer' ), get_comment_date(), get_comment_time() ); ?>
                         </time>
                     </a>
-                    <?php edit_comment_link( __( 'Edit', '_s' ), '<span class="edit-link">', '</span>' ); ?>
+                    <?php edit_comment_link( __( 'Edit', 'tayloroyer' ), '<span class="edit-link">', '</span>' ); ?>
                 </div><!-- .comment-metadata -->
 
                 <?php if ( '0' == $comment->comment_approved ) : ?>
-                <p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', '_s' ); ?></p>
+                <p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'tayloroyer' ); ?></p>
                 <?php endif; ?>
             </footer><!-- .comment-meta -->
 
@@ -67,7 +67,7 @@ function _s_comment( $comment, $args, $depth ) {
     <?php
     endif;
 }
-endif; // ends check for _s_comment()
+endif; // ends check for tayloroyer_comment()
 
 
 
@@ -78,25 +78,25 @@ endif; // ends check for _s_comment()
    ========================================================================== */
 
 // Append read more link to excerpt
-function _s_excerpt_more( $more ) {
+function tayloroyer_excerpt_more( $more ) {
 
     global $post;
     return '... <a class="more-link" href="' . get_permalink( $post->ID ) . '">Read More &raquo;</a>';
 }
-add_filter('excerpt_more', '_s_excerpt_more');
+add_filter('excerpt_more', 'tayloroyer_excerpt_more');
 
 
 
 
 
-if ( ! function_exists( '_s_excerpt' ) ) :
+if ( ! function_exists( 'tayloroyer_excerpt' ) ) :
 /**
  * Limit the Excerpt by 'x' amount of words
  *
  * @param int $limit, str $copy
  * @return str $content
  */
-function _s_excerpt( $limit, $copy = NULL ) {
+function tayloroyer_excerpt( $limit, $copy = NULL ) {
 
     global $post;
 
@@ -122,14 +122,14 @@ endif;
 
 
 
-if ( ! function_exists( '_s_content' ) ) :
+if ( ! function_exists( 'tayloroyer_content' ) ) :
 /**
  * Limit the Content by 'x' amount of words
  *
  * @param int $limit, str $copy
  * @return str $content
  */
-function _s_content( $limit, $copy = NULL ) {
+function tayloroyer_content( $limit, $copy = NULL ) {
 
     if( $copy ) {
         $content = explode( ' ', $copy, $limit );
@@ -159,14 +159,14 @@ endif;
    Pagination
    ========================================================================== */
 
-if ( ! function_exists( '_s_pagination' ) ) :
+if ( ! function_exists( 'tayloroyer_pagination' ) ) :
 /**
 * Display custom pagination
 *
 * @param str $echo
 * @return str $r
 */
-function _s_pagination( $echo = true ) {
+function tayloroyer_pagination( $echo = true ) {
 
    global $wp_query;
 
@@ -206,7 +206,7 @@ function _s_pagination( $echo = true ) {
 
    $r .= '    </ul>' . "\n";
 
-   $page_count = _s_result_count_output( array( 'echo' => false ) );
+   $page_count = tayloroyer_result_count_output( array( 'echo' => false ) );
 
    $r .= '    ' . $page_count . "\n";
    $r .= '</div>' . "\n";
@@ -223,13 +223,13 @@ endif;
 
 
 
-if ( ! function_exists( '_s_result_count' ) ) :
+if ( ! function_exists( 'tayloroyer_result_count' ) ) :
 /**
  * Result Count Meta
  * @param  boolean $echo echo or return result
  * @return string        output
  */
-function _s_result_count( $echo = true ) {
+function tayloroyer_result_count( $echo = true ) {
 
     $r = '';
 
@@ -244,15 +244,15 @@ function _s_result_count( $echo = true ) {
 
     if ( 1 == $total_items ) :
 
-        __( 'Showing: 1 Result', '_s' );
+        __( 'Showing: 1 Result', 'tayloroyer' );
 
     elseif ( $total_items <= $per_page || -1 == $per_page ) :
 
-        sprintf( __( 'Showing: %d Results', '_s' ), $total_items );
+        sprintf( __( 'Showing: %d Results', 'tayloroyer' ), $total_items );
 
     else :
 
-        $r .= 'Showing: ' . sprintf( _x( '%1$d&ndash;%2$d of %3$d', '%1$d = page_start, %2$d = page_end, %3$d = total_items', '_s' ), $page_start, $page_end, $total_items ) . "\n";
+        $r .= 'Showing: ' . sprintf( _x( '%1$d&ndash;%2$d of %3$d', '%1$d = page_start, %2$d = page_end, %3$d = total_items', 'tayloroyer' ), $page_start, $page_end, $total_items ) . "\n";
 
     endif;
 
@@ -269,13 +269,13 @@ endif;
 
 
 
-if ( ! function_exists( '_s_result_count_output' ) ) :
+if ( ! function_exists( 'tayloroyer_result_count_output' ) ) :
 /**
  * Result Count Meta Output
  * @param array $args options
  * @return string           html output
  */
-function _s_result_count_output( $args = array() ) {
+function tayloroyer_result_count_output( $args = array() ) {
 
     $r = '';
 
@@ -291,7 +291,7 @@ function _s_result_count_output( $args = array() ) {
     // OPTIONAL: Declare each item in $args as its own variable i.e. $type, $before.
     extract( $args, EXTR_SKIP );
 
-    $result = _s_result_count( false );
+    $result = tayloroyer_result_count( false );
 
     if ( $result ) :
 
@@ -318,14 +318,14 @@ endif;
    Social Icons
    ========================================================================== */
 
-if ( ! function_exists( '_s_social_icons' ) ) :
+if ( ! function_exists( 'tayloroyer_social_icons' ) ) :
 /**
  * Output social icons
  *
  * @param boolean $echo echo or return result
  * @return str $r
  */
-function _s_social_icons( $args = array() ) {
+function tayloroyer_social_icons( $args = array() ) {
 
     $defaults = array (
         'container_class' => '',
