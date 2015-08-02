@@ -10,3 +10,21 @@
 	@include container;
 	text-align: center;
 }
+
+/* MENU STYLES */
+
+button.menu-toggle {
+	display: none;
+}
+ul.menu {
+	@include flexbox();
+	list-style: none;
+	justify-content: flex-end;
+}
+li.menu-item {
+	@include flex(0 1 100px);
+	a {
+		color: $charcoal;
+	}
+}
+
