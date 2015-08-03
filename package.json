@@ -19,6 +19,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/blainerobison/_s.git"
+    "url": "https://github.com/giantsoup/tayloroyer.local"
+  },
+  "dependencies": {
+    "grunt-autoprefixer": "^3.0.3"
   }
 }

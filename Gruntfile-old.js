@@ -55,21 +55,6 @@ module.exports = function ( grunt ) {
             }
         },
 
-        // Add vendor prefixed styles
-        autoprefixer: {
-            options: {
-                browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
-            },
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.dist %>/css/',
-                    src: '{,*/}*.css',
-                    dest: '<%= config.dist %>/css/'
-                }]
-            }
-        },
-
         // Concatenate JS Files
         concat: {
             main: {
@@ -164,7 +149,7 @@ module.exports = function ( grunt ) {
         watch: {
             css: {
                 files: '<%= config.src %>/sass/**/*.{scss,sass}',
-                tasks: [ 'sass:minified', 'autoprefixer' ], // We added autoprefixer here
+                tasks: [ 'sass:minified' ],
                 // tasks: [ 'sass', 'csscomb' ] // slower, but will process all CSS files
             },
             jsMain: {
@@ -207,7 +192,6 @@ module.exports = function ( grunt ) {
     // Default
     grunt.registerTask( 'default', [
         'sass',
-        'autoprefixer', // Adding autoprefixer task
         'csscomb',
         'concat',
         'uglify',
@@ -221,7 +205,6 @@ module.exports = function ( grunt ) {
     // Run all tasks, including sass:expanded
     grunt.registerTask( 'build', [
         'sass',
-        'autoprefixer', // Adding autoprefixer task
         'csscomb',
         'concat',
         'uglify',

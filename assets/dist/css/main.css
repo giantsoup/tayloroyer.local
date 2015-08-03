@@ -190,8 +190,7 @@ figure {
  * Address differences between Firefox and other browsers.
  */
 hr {
-    -moz-box-sizing: content-box;
-         box-sizing: content-box;
+    box-sizing: content-box;
     height: 0;
 }
 
@@ -330,11 +329,9 @@ input[type="number"]::-webkit-outer-spin-button {
  *    (include `-moz` to future-proof).
  */
 input[type="search"] {
-    -webkit-box-sizing: content-box;
     /* 1 */
-       -moz-box-sizing: content-box;
     /* 2 */
-            box-sizing: content-box; 
+    box-sizing: content-box; 
 
     -webkit-appearance: textfield;
 }
@@ -769,14 +766,12 @@ html {
 *,
 *:after,
 *:before {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
 
     -webkit-font-smoothing: antialiased;
     /* 1 */
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and (min-device-pixel-ratio: 1.25), only screen and (min-resolution: 200dpi), only screen and (min-resolution: 1.25dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and (min-device-pixel-ratio: 1.25), only screen and (-webkit-min-device-pixel-ratio: 2.0833333333333335), only screen and (min-resolution: 200dpi), only screen and (min-resolution: 1.25dppx) {
     *,
     *:after,
     *:before {
@@ -877,10 +872,8 @@ textarea {
 
 a {
     -webkit-transition-duration: .5s;
-       -moz-transition-duration: .5s;
             transition-duration: .5s; 
     -webkit-transition-property: color, background, border;
-       -moz-transition-property: color, background, border;
             transition-property: color, background, border;
     text-decoration: none;
     color: #0065b2;
@@ -2649,18 +2642,19 @@ button.menu-toggle {
 
 ul.menu {
     display: -webkit-box;
-    display:    -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display:         flex;
     list-style: none;
 
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+            justify-content: flex-end;
 }
 
 li.menu-item {
     -webkit-box-flex: 0;
-       -moz-box-flex: 0;
             box-flex: 0;
     -webkit-flex: 0 1 100px;
        -moz-flex: 0 1 100px;
@@ -2681,10 +2675,8 @@ input[type="submit"] {
     padding: .5em 1em;
     cursor: pointer;
     -webkit-transition-duration: .15s;
-       -moz-transition-duration: .15s;
             transition-duration: .15s; 
     -webkit-transition-property: color, background, border;
-       -moz-transition-property: color, background, border;
             transition-property: color, background, border;
     text-align: center;
     text-transform: uppercase;
@@ -2804,9 +2796,7 @@ input[type="submit"]:hover {
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
-       -moz-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
-         -o-transform: translateY(-50%);
             transform: translateY(-50%);
 }
 
@@ -2899,7 +2889,6 @@ textarea {
     margin: 0 0 1em 0;
     padding: .75em .5em;
     -webkit-transition: border .15s, box-shadow .15s, background .15s;
-       -moz-transition: border .15s, box-shadow .15s, background .15s;
             transition: border .15s, box-shadow .15s, background .15s; 
     border: 1px solid #dbdbdb;
     background-color: white;
@@ -2925,7 +2914,6 @@ button[type="submit"] {
 
 button {
     -webkit-transition: all .15s;
-       -moz-transition: all .15s;
             transition: all .15s;
 }
 
@@ -2933,9 +2921,7 @@ button {
  * Normalize sets as 'content-box'
  */
 input[type="search"] {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     /* 1 */
 }
 
@@ -3013,7 +2999,6 @@ textarea {
     position: relative;
     padding: 1em;
     -webkit-transition: background .15s;
-       -moz-transition: background .15s;
             transition: background .15s; 
     background-color: #f6f6f6;
 }
@@ -3060,15 +3045,11 @@ textarea {
     padding: .5em;
     cursor: pointer;
     -webkit-transition-duration: .15s;
-       -moz-transition-duration: .15s;
             transition-duration: .15s;
     -webkit-transition-property: color, -webkit-transform;
-       -moz-transition-property: color, -moz-transform;
             transition-property: color, transform;
     -webkit-transform: rotate(0deg);
-       -moz-transform: rotate(0deg);
         -ms-transform: rotate(0deg);
-         -o-transform: rotate(0deg);
             transform: rotate(0deg); 
     color: #dbdbdb;
     border-radius: 50%;
@@ -3076,9 +3057,7 @@ textarea {
 }
 .notification__close:hover {
     -webkit-transform: rotate(90deg);
-       -moz-transform: rotate(90deg);
         -ms-transform: rotate(90deg);
-         -o-transform: rotate(90deg);
             transform: rotate(90deg); 
     color: #d85030;
 }
@@ -3107,15 +3086,11 @@ textarea {
     .csstransforms3d.csstransitions.js-ready #inner-wrap {
         right: 0 !important;
         -webkit-transition-timing-function: ease-in-out;
-           -moz-transition-timing-function: ease-in-out;
                 transition-timing-function: ease-in-out;
         -webkit-transition-duration: 500ms;
-           -moz-transition-duration: 500ms;
                 transition-duration: 500ms;
         -webkit-transform: translate3d(0, 0, 0);
-           -moz-transform: translate3d(0, 0, 0);
             -ms-transform: translate3d(0, 0, 0);
-             -o-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
 
         -webkit-backface-visibility: hidden;
@@ -3125,9 +3100,7 @@ textarea {
 @media screen and (max-width: 47.99em) {
     .csstransforms3d.csstransitions.js-nav #inner-wrap {
         -webkit-transform: translate3d(-70%, 0, 0) scale3d(1, 1, 1);
-           -moz-transform: translate3d(-70%, 0, 0) scale3d(1, 1, 1);
             -ms-transform: translate3d(-70%, 0, 0) scale3d(1, 1, 1);
-             -o-transform: translate3d(-70%, 0, 0) scale3d(1, 1, 1);
                 transform: translate3d(-70%, 0, 0) scale3d(1, 1, 1);
     }
 }
@@ -3197,9 +3170,7 @@ textarea {
     .csstransforms3d.csstransitions.js-ready .nav-primary {
         right: 0;
         -webkit-transform: translate3d(100%, 0, 0);
-           -moz-transform: translate3d(100%, 0, 0);
             -ms-transform: translate3d(100%, 0, 0);
-             -o-transform: translate3d(100%, 0, 0);
                 transform: translate3d(100%, 0, 0);
 
         -webkit-backface-visibility: hidden;
@@ -3209,17 +3180,12 @@ textarea {
 @media screen and (max-width: 47.99em) {
     .csstransforms3d.csstransitions.js-ready .nav-primary .block {
         -webkit-transition: opacity 300ms 100ms, -webkit-transform 500ms ease;
-           -moz-transition: opacity 300ms 100ms, -moz-transform 500ms ease;
                 transition: opacity 300ms 100ms, transform 500ms ease;
         -webkit-transform: translate3d(-70%, 0, 0) scale3d(.9, .9, .9);
-           -moz-transform: translate3d(-70%, 0, 0) scale3d(.9, .9, .9);
             -ms-transform: translate3d(-70%, 0, 0) scale3d(.9, .9, .9);
-             -o-transform: translate3d(-70%, 0, 0) scale3d(.9, .9, .9);
                 transform: translate3d(-70%, 0, 0) scale3d(.9, .9, .9);
         -webkit-transform-origin: 50% 0;
-           -moz-transform-origin: 50% 0;
             -ms-transform-origin: 50% 0;
-             -o-transform-origin: 50% 0;
                 transform-origin: 50% 0; 
         opacity: .7;
     }
@@ -3227,9 +3193,7 @@ textarea {
 @media screen and (max-width: 47.99em) {
     .csstransforms3d.csstransitions.js-nav .nav-primary .block {
         -webkit-transform: translate3d(0, 0, 0);
-           -moz-transform: translate3d(0, 0, 0);
             -ms-transform: translate3d(0, 0, 0);
-             -o-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0); 
         opacity: 1;
     }
@@ -3298,10 +3262,8 @@ textarea {
     display: block;
     padding: .4em .9em;
     -webkit-transition-duration: .15s;
-       -moz-transition-duration: .15s;
             transition-duration: .15s; 
     -webkit-transition-property: background, color;
-       -moz-transition-property: background, color;
             transition-property: background, color;
     color: #c2c2c2;
     background-color: #e6e6e6;
@@ -3346,10 +3308,8 @@ textarea {
     width: 1.75em;
     height: 1.75em;
     -webkit-transition-duration: .15s;
-       -moz-transition-duration: .15s;
             transition-duration: .15s; 
     -webkit-transition-property: color background box-shadow;
-       -moz-transition-property: color background box-shadow;
             transition-property: color background box-shadow;
     text-align: center;
     color: white;
@@ -3376,7 +3336,7 @@ textarea {
     margin-bottom: .4em;
 }
 
-body:not(#secondary) {
+.page-id-4 .entry-title {
     display: none;
 }
 
@@ -3557,9 +3517,7 @@ body:not(#secondary) {
     position: absolute;
     top: 0;
     left: 0;
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box; 
+    box-sizing: border-box; 
     width: 100%;
     height: 100%;
     padding: 0 8px;
@@ -3598,7 +3556,6 @@ body:not(#secondary) {
 
 .mfp-zoom-out-cur,
 .mfp-zoom-out-cur .mfp-image-holder .mfp-close {
-    cursor:    -moz-zoom-out;
     cursor: -webkit-zoom-out;
     cursor:         zoom-out;
 }
@@ -3606,7 +3563,6 @@ body:not(#secondary) {
 .mfp-zoom {
     cursor: pointer;
     cursor: -webkit-zoom-in;
-    cursor:    -moz-zoom-in;
     cursor:         zoom-in;
 }
 
@@ -3620,6 +3576,7 @@ body:not(#secondary) {
 .mfp-counter {
     -webkit-user-select: none;
        -moz-user-select: none;
+        -ms-user-select: none;
             user-select: none;
 }
 
@@ -3669,8 +3626,7 @@ button.mfp-arrow {
     border: 0;
     outline: none;
     background: transparent;
-    -webkit-box-shadow: none;
-            box-shadow: none; 
+    box-shadow: none; 
 
     -webkit-appearance: none;
 }
@@ -3856,9 +3812,7 @@ button::-moz-focus-inner {
 img.mfp-img {
     line-height: 0;
     display: block;
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     width: auto;
     max-width: 100%;
     height: auto;
@@ -3945,9 +3899,7 @@ img.mfp-img {
         position: fixed;
         top: auto;
         bottom: 0;
-        -webkit-box-sizing: border-box;
-           -moz-box-sizing: border-box;
-                box-sizing: border-box; 
+        box-sizing: border-box; 
         margin: 0;
         padding: 3px 5px;
         background: rgba(0, 0, 0, .6);
@@ -3975,14 +3927,17 @@ img.mfp-img {
 @media all and (max-width: 900px) {
     .mfp-arrow {
         -webkit-transform: scale(.75);
+            -ms-transform: scale(.75);
                 transform: scale(.75);
     }
     .mfp-arrow-left {
         -webkit-transform-origin: 0;
+            -ms-transform-origin: 0;
                 transform-origin: 0;
     }
     .mfp-arrow-right {
         -webkit-transform-origin: 100%;
+            -ms-transform-origin: 100%;
                 transform-origin: 100%;
     }
     .mfp-container {
@@ -4031,7 +3986,6 @@ img.mfp-img {
  */
 .mfp-fade.mfp-bg {
     -webkit-transition: all .15s ease-out;
-       -moz-transition: all .15s ease-out;
             transition: all .15s ease-out; 
     opacity: 0;
 }
@@ -4046,7 +4000,6 @@ img.mfp-img {
 
 .mfp-fade.mfp-wrap .mfp-content {
     -webkit-transition: all .15s ease-out;
-       -moz-transition: all .15s ease-out;
             transition: all .15s ease-out; 
     opacity: 0;
 }
@@ -4065,13 +4018,9 @@ img.mfp-img {
 /* start state */
 .mfp-animation .mfp-modal {
     -webkit-transition: all .2s ease-in-out;
-       -moz-transition: all .2s ease-in-out;
-         -o-transition: all .2s ease-in-out;
             transition: all .2s ease-in-out;
     -webkit-transform: scale(.8);
-       -moz-transform: scale(.8);
         -ms-transform: scale(.8);
-         -o-transform: scale(.8);
             transform: scale(.8); 
     opacity: 0;
 }
@@ -4079,9 +4028,7 @@ img.mfp-img {
 /* animate in */
 .mfp-animation.mfp-ready .mfp-modal {
     -webkit-transform: scale(1);
-       -moz-transform: scale(1);
         -ms-transform: scale(1);
-         -o-transform: scale(1);
             transform: scale(1); 
     opacity: 1;
 }
@@ -4089,9 +4036,7 @@ img.mfp-img {
 /* animate out */
 .mfp-animation.mfp-removing .mfp-modal {
     -webkit-transform: scale(.8);
-       -moz-transform: scale(.8);
         -ms-transform: scale(.8);
-         -o-transform: scale(.8);
             transform: scale(.8);
     opacity: 0;
 }
@@ -4099,8 +4044,6 @@ img.mfp-img {
 /* Dark overlay, start state */
 .mfp-animation.mfp-bg {
     -webkit-transition: opacity .3s ease-out;
-       -moz-transition: opacity .3s ease-out;
-         -o-transition: opacity .3s ease-out;
             transition: opacity .3s ease-out; 
     opacity: 0;
 }
